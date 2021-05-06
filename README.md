@@ -5,7 +5,7 @@ Robin's web app is looking good and functioning well, but she wants to add more 
 
 **What Has Been Created**<br><br>
 This new assignment consists of three technical analyses. You will submit the following deliverables:<br>
-    •   Deliverable 1: Scrape Full-Resolution Mars Hemisphere Images and Titles<br>
-    •	Deliverable 2: Update the Web App with Mars Hemisphere Images and Titles<br>
-    •	Deliverable 3: Add Bootstrap 3 Components<br>
+    •   Deliverable 1:  Scrape Full-Resolution Mars Hemisphere Images and Titles<br>
+    •	Deliverable 2:  Update the Web App with Mars Hemisphere Images and Titles<br>
+    •	Deliverable 3:  Add Bootstrap 3 Components<br>
 
