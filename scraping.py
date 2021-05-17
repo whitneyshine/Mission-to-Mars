@@ -2,8 +2,8 @@
 from splinter import Browser
 from bs4 import BeautifulSoup as soup
 import pandas as pd
-from webdriver_manager.chrome import ChromeDriverManager
 import datetime as dt
+from webdriver_manager.chrome import ChromeDriverManager
 
 def scrape_all():
     # Initiate headless driver for deployment
