@@ -2,9 +2,8 @@
 from splinter import Browser
 from bs4 import BeautifulSoup as soup
 import pandas as pd
-import datetime as dt
 from webdriver_manager.chrome import ChromeDriverManager
-
+import datetime as dt
 
 def scrape_all():
     # Initiate headless driver for deployment
@@ -98,6 +97,6 @@ def mars_facts():
     return df.to_html(classes="table table-striped")
 
 if __name__ == "__main__":
-    
+
     # If running as script, print scraped data
     print(scrape_all())
