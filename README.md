@@ -11,3 +11,4 @@ This new assignment consists of three technical analyses. You will submit the fo
     •	Deliverable 2:  Update the Web App with Mars Hemisphere Images and Titles<br>
     •	Deliverable 3:  Add Bootstrap 3 Components<br>
 
+![mars_hem](mars_hem.png)
