@@ -11,6 +11,7 @@ def scrape_all():
     browser = Browser('chrome', **executable_path, headless=True)
 
     news_title, news_paragraph = mars_news(browser)
+    hemisphere_image_urls = each_mars_hemisphere_image(browser)
 
     # Run all scraping functions and store results in a dictionary
     data = {
@@ -18,6 +19,7 @@ def scrape_all():
         "news_paragraph": news_paragraph,
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
+        "hemispheres": hemisphere_image_urls,
         "last_modified": dt.datetime.now()
     }
 
@@ -95,6 +97,51 @@ def mars_facts():
 
     # Convert dataframe into HTML format, add bootstrap
     return df.to_html(classes="table table-striped")
+
+# # D1: Scrape High-Resolution Mars’ Hemisphere Images and Titles
+
+# ### Hemispheres
+
+def each_mars_hemisphere_image(browser):
+
+    #Use browser to visit the URL 
+    hem_url = 'https://data-class-mars-hemispheres.s3.amazonaws.com/Mars_Hemispheres/index.html'
+
+    browser.visit(hem_url)
+
+    # Parse HTML with soup
+    html_hemispheres = browser.html
+    hemisphere_soup = soup(html_hemispheres, 'html.parser')
+    hemispheres = hemisphere_soup.find_all('div', class_='item')
+
+    #Create a list to hold the images and titles.
+    hemisphere_image_urls = []
+
+    #Write code to retrieve the image urls and titles for each hemisphere.
+    hemispheres_url = 'https://data-class-mars-hemispheres.s3.amazonaws.com/Mars_Hemispheres/'
+
+    for hem in hemispheres:
+    
+        # Store title
+        hem_title = hem.find('h3').text
+    
+        ending_img_url = hem.find('a', class_='itemLink product-item')['href']
+    
+        browser.visit(hemispheres_url + ending_img_url)
+    
+        # Parse HTML with soup
+        hem_img_html = browser.html
+        hem_img_soup = soup(hem_img_html, 'html.parser')
+    
+        # Create image URL
+        hem_img_url = hemispheres_url + hem_img_soup.find('img', class_='wide-image')['src']
+    
+        # Append to a list of dictionaries
+        hemisphere_image_urls.append({'img_url' : hem_img_url, 'title' : hem_title})
+
+    #Print the list that holds the dictionary of each image url and title.
+    return hemisphere_image_urls
+
 
 if __name__ == "__main__":
 
